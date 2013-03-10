@@ -51,7 +51,7 @@
         output = [],
         stack = [],
         lastToken, sign,
-        i, l, token, j, operator, thisOperator;
+        i, l, token, operator, thisOperator;
 
     function isLeftPara(token) {
       return token === '(';
