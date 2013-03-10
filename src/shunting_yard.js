@@ -1,6 +1,10 @@
 /**
  * Implementation of the Shunting yard algorithm
  * look it up: http://en.wikipedia.org/wiki/Shunting-yard_algorithm
+ *
+ * Copyright 2013, Georg Tavonius
+ * Licensed under the MIT license.
+ *
  * @author Georg Tavonius a.k.a. Calamari (http://github.com/Calamari)
  * @homepage http://github.com/Calamari/shunting-yard.js
  */
