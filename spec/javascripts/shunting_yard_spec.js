@@ -52,11 +52,27 @@ describe("jaz.shuntingYard", function() {
       testCase(key.split(' '), positiveTest[key]);
     }
   });
+
   it('returns null if to many paranthesis are closed', function() {
     expect(jaz.shuntingYard('1*(3+4))')).toEqual(null);
   });
 
   it('returns null if to many paranthesis are opened', function() {
     expect(jaz.shuntingYard('1*((3+4)')).toEqual(null);
+  });
+
+  describe("when adding some custom operators", function() {
+    beforeEach(function() {
+      jaz.Operators['add'] = new jaz.Operator('add', 2, 'left', 2, function(a, b) { return a + b; });
+      jaz.Operators['multiply'] = new jaz.Operator('multiply', 2, 'left', 2, function(a, b) { return a * b; });
+    });
+    afterEach(function() {
+      delete jaz.Operators['add'];
+      delete jaz.Operators['multiply'];
+    });
+
+    it('it works', function() {
+      expect(jaz.shuntingYard(['2','multiply','(','3','add','4',')'])).toEqual(['2', '3', '4', 'add', 'multiply']);
+    });
   });
 });
