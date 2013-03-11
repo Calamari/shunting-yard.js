@@ -8,11 +8,6 @@
  * @author Georg Tavonius a.k.a. Calamari (http://github.com/Calamari)
  * @homepage http://github.com/Calamari/shunting-yard.js
  */
- /**
-   TODO:
-     - change tokenizer from '' to whitespace for example
-     - change operators
-  */
 (function(undef) {
   'use strict';
   var jaz = window.jaz || {};
@@ -64,7 +59,7 @@
     }
 
     function isOperator(token) {
-      return operators.indexOf(token) !== -1;
+      return jaz.Operators[token];
     }
 
     for (i=0,l=string.length; i<l; ++i) {
