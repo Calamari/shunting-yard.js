@@ -13,7 +13,7 @@
      - change tokenizer from '' to whitespace for example
      - change operators
   */
-(function() {
+(function(undef) {
   'use strict';
   var jaz = window.jaz || {};
 
@@ -82,6 +82,9 @@
         while ((operator = stack.pop()) && !isLeftPara(operator)) {
           output.push(operator);
         }
+        if (operator === undef) {
+          return null; // to many closing paranthesis
+        }
       } else if (isOperator(token)) {
         if (!lastToken || lastToken === '(') {
           sign = token;
@@ -96,8 +99,6 @@
           } else {
             break;
           }
-          // operator = null;
-          // thisOperator = null;
         }
         stack.push(token);
       } else {
@@ -115,7 +116,11 @@
     //   output.push(stack[i]);
     // }
     while (stack.length) {
-      output.push(stack.pop());
+      token = stack.pop();
+      if (isLeftPara(token)) {
+        return null; // to many opening paranthesis
+      }
+      output.push(token);
     }
 
     return output;

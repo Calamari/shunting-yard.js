@@ -30,4 +30,12 @@ describe("jaz.shuntingYard", function() {
       testCase(key, positiveTest[key]);
     }
   });
+
+  it('returns null if to many paranthesis are closed', function() {
+    expect(jaz.shuntingYard('1*(3+4))')).toEqual(null);
+  });
+
+  it('returns null if to many paranthesis are opened', function() {
+    expect(jaz.shuntingYard('1*((3+4)')).toEqual(null);
+  });
 });
