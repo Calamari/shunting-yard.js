@@ -5,6 +5,10 @@ describe("jaz.shuntingYard", function() {
     });
   };
 
+  it('returns an Array', function() {
+    expect(jaz.shuntingYard('').constructor).toEqual(Array);
+  });
+
   describe("resolves", function() {
     var positiveTest = {
       '10+3': ['10', '3', '+'],
