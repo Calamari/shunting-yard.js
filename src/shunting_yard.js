@@ -17,11 +17,13 @@
   'use strict';
   var jaz = window.jaz || {};
 
-  function Operator(name, precedence, associativity) {
+  function Operator(name, precedence, associativity, numParams, method) {
     associativity = associativity || 'left';
     return {
       name: name,
       precedence: precedence,
+      params: numParams,
+      method: method,
       higherThen: function(op) {
         return precedence > op.precedence;
       },
@@ -121,11 +123,11 @@
 
   jaz.Operator = Operator;
   jaz.Operators = {
-    '+': new Operator('+', 2, 'left'),
-    '-': new Operator('-', 2, 'left'),
-    '*': new Operator('*', 3, 'left'),
-    '/': new Operator('/', 3, 'left'),
-    '^': new Operator('^', 4, 'right')
+    '+': new Operator('+', 2, 'left', 2, function(a, b) { return a + b; }),
+    '-': new Operator('-', 2, 'left', 2, function(a, b) { return a - b; }),
+    '*': new Operator('*', 3, 'left', 2, function(a, b) { return a * b; }),
+    '/': new Operator('/', 3, 'left', 2, function(a, b) { return a / b; }),
+    '^': new Operator('^', 4, 'right', 2, function(a, b) { return Math.pow(a, b); })
   };
 
   window.jaz = jaz;

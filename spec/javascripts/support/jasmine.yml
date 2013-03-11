@@ -12,6 +12,7 @@
 #
 src_files:
     - src/shunting_yard.js
+    - src/resolve_rpn.js
 
 # stylesheets
 #
