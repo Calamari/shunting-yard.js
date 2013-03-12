@@ -61,6 +61,19 @@ describe("jaz.shuntingYard", function() {
     expect(jaz.shuntingYard('1*((3+4)')).toEqual(null);
   });
 
+  describe("when having functions", function() {
+    beforeEach(function() {
+      jaz.Functions['sqrt'] = new jaz.Function('sqrt', 1, function(a) { return Math.sqrt(a); });
+    });
+    afterEach(function() {
+      delete jaz.Functions['sqrt'];
+    });
+
+    it('works', function() {
+      expect(jaz.shuntingYard([1, '*', 'sqrt', '(', 3, '+', 4, ')'])).toEqual([1, 3, 4, '+', 'sqrt', '*']);
+    });
+  });
+
   describe("when adding some custom operators", function() {
     beforeEach(function() {
       jaz.Operators['add'] = new jaz.Operator('add', 2, 'left', 2, function(a, b) { return a + b; });

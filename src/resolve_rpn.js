@@ -22,7 +22,7 @@
         i, l, op;
 
     function getOperator(token) {
-      return jaz.Operators[token];
+      return jaz.Operators[token] || jaz.Functions[token];
     }
 
     for (i=0,l=array.length; i<l; ++i) {

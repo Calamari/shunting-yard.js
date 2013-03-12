@@ -43,6 +43,14 @@
     };
   }
 
+  function Function(name, numParams, method) {
+    return {
+      name: name,
+      params: numParams,
+      method: method
+    };
+  }
+
   jaz.shuntingYard = function(string) {
     var operators = ['+', '-', '*', '/', '^'],
         output = [],
@@ -62,6 +70,10 @@
       return jaz.Operators[token];
     }
 
+    function isFunction(token) {
+      return jaz.Functions[token];
+    }
+
     for (i=0,l=string.length; i<l; ++i) {
       token = string[i];
       if (token === ' ') {
@@ -73,9 +85,13 @@
       }
       if (isLeftPara(token)) {
         stack.push(token);
+      } else if (isFunction(token)) {
+        stack.push(token);
       } else if (isRightPara(token)) {
         while ((operator = stack.pop()) && !isLeftPara(operator)) {
-          output.push(operator);
+          if (!isFunction(operator)) {
+            output.push(operator);
+          }
         }
         if (operator === undef) {
           return null; // to many closing paranthesis
@@ -129,6 +145,9 @@
     '/': new Operator('/', 3, 'left', 2, function(a, b) { return a / b; }),
     '^': new Operator('^', 4, 'right', 2, function(a, b) { return Math.pow(a, b); })
   };
+
+  jaz.Function = Function;
+  jaz.Functions = {};
 
   window.jaz = jaz;
 }());
