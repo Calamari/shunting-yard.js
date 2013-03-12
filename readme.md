@@ -17,6 +17,10 @@ Note that `jaz.shuntingYard` will ignore every whitespace of the input string. S
 
 Used with an array of tokens, you have some more flexibility, because the operator tokens can be longer then single characters.
 
+In both cases, you have to define which operators will be in your input string, because the algorithm has to know the precedence and associativity of the operators. Predefined are those common operators: `+`, `-`, `*`, `/` and `^`.
+
+Beware that your tokens don't contain whitespaces at the beginning or the end, so `"+"` is not the same as `" +"`.
+
 
 ## Example
 
@@ -41,6 +45,14 @@ You can also use an array as input:
 jaz.Operators['add'] = new jaz.Operator('add', 2, 'left', 2, function(a, b) { return a + b; });
 var rpn = jaz.shuntingYard([5, 'add', 4, '*', 4]); // rpn is now: [5, 4, 4, '*', 'add']
 var result = jaz.resolveRPN(rpn); // result is now: 21
+```
+
+And you can define new functions (those do not have to be infix):
+
+```js
+jaz.Operators['sqrt'] = new jaz.Operator('sqrt', 1, function(a) { return Math.sqrt(a); });
+var rpn = jaz.shuntingYard([6, '+', 'sqrt', '(', 6, '+', 3 ')']); // rpn is now: ['6', '6', '3', '+', 'sqrt', '+']
+var result = jaz.resolveRPN(rpn); // result is now: 9
 ```
 
 
