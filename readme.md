@@ -1,4 +1,4 @@
-# Shunting Yard Algorithm
+# Shunting Yard Algorithm [![Build Status](https://travis-ci.org/Calamari/shunting-yard.js.png)](https://travis-ci.org/Calamari/shunting-yard.js)
 
 The shunting yard algorithm transforms a mathematical expression from infix notation into a reversed polish notation (postfix).
 
