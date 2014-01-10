@@ -10,8 +10,14 @@ module.exports = function(grunt) {
       }
     },
     jasmine: {
-      all: {
+      src: {
         src: 'src/**/*.js',
+        options: {
+          specs: 'spec/**/*_spec.js'
+        }
+      },
+      dist: {
+        src: 'dist/**/*.js',
         options: {
           specs: 'spec/**/*_spec.js'
         }
@@ -33,6 +39,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('test', ['jasmine']);
+  grunt.registerTask('test', ['jasmine:src']);
   grunt.registerTask('build', ['concat', 'uglify']);
+
+  grunt.registerTask('default', ['build', 'jasmine:dist']);
 };
