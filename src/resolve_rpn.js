@@ -1,4 +1,4 @@
-/**
+/*!
  * Resolves a RPN
  *
  * Copyright 2013, Georg Tavonius
@@ -7,11 +7,6 @@
  * @author Georg Tavonius a.k.a. Calamari (http://github.com/Calamari)
  * @homepage http://github.com/Calamari/shunting-yard.js
  */
- /**
-   TODO:
-     - change tokenizer from '' to whitespace for example
-     - change operators
-  */
 (function() {
   'use strict';
   var jaz = window.jaz || {};

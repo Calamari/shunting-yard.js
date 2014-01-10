@@ -55,10 +55,16 @@ var rpn = jaz.shuntingYard([6, '+', 'sqrt', '(', 6, '+', 3 ')']); // rpn is now:
 var result = jaz.resolveRPN(rpn); // result is now: 9
 ```
 
+## TODOs
+
+For `resolveRPN`:
+  - change tokenizer from '' to whitespace for example
+  - change operators
+
 
 ## MIT License
 
-Copyright (C) 2013 Georg Tavonius
+Copyright (C) 2013-2014 Georg Tavonius
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

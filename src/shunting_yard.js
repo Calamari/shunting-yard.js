@@ -1,4 +1,4 @@
-/**
+/*!
  * Implementation of the Shunting yard algorithm
  * look it up: http://en.wikipedia.org/wiki/Shunting-yard_algorithm
  *
