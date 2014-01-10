@@ -1,0 +1,28 @@
+{
+  "name": "shunting-yard.js",
+  "version": "1.0.1",
+  "homepage": "https://github.com/Calamari/shunting-yard.js",
+  "authors": [
+    "Georg Tavonius <g.tavonius@gmail.com>"
+  ],
+  "description": "The shunting yard algorithm transforms a mathematical expression from infix notation into a reversed polish notation (postfix).",
+  "main": "dist/shunting-yard.js",
+  "keywords": [
+    "shunting yard",
+    "rpn",
+    "algorithm",
+    "infix",
+    "postfix",
+    "math",
+    "expressions",
+    "transformation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
