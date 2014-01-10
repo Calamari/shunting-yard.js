@@ -5,7 +5,7 @@
  * Copyright 2013, Georg Tavonius
  * Licensed under the MIT license.
  *
- * @version 1.0.0
+ * @version 1.0.1
  *
  * @author Georg Tavonius a.k.a. Calamari (http://github.com/Calamari)
  * @homepage http://github.com/Calamari/shunting-yard.js
@@ -21,10 +21,10 @@
       precedence: precedence,
       params: numParams,
       method: method,
-      higherThen: function(op) {
+      greaterThen: function(op) {
         return precedence > op.precedence;
       },
-      higherThenEqual: function(op) {
+      greaterThenEqual: function(op) {
         return precedence >= op.precedence;
       },
       equalThen: function(op) {
