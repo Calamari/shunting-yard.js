@@ -4,7 +4,7 @@
   "description": "The shunting yard algorithm transforms a mathematical expression from infix notation into a reversed polish notation (postfix).",
   "main": "dist/shunting-yard.js",
   "scripts": {
-    "test": "grunt"
+    "test": "./node_modules/.bin/grunt"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "grunt": "~0.4.2",
     "grunt-contrib-jasmine": "~0.5.2",
     "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-concat": "~0.3.0"
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-cli": "~0.1.11"
   }
 }
