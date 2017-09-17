@@ -1,10 +1,11 @@
 {
   "name": "shunting-yard.js",
-  "version": "1.0.1",
-  "description": "The shunting yard algorithm transforms a mathematical expression from infix notation into a reversed polish notation (postfix).",
-  "main": "dist/shunting-yard.js",
+  "version": "2.0.0",
+  "description": "The shunting yard algorithm transforms a mathematical expression from infix notation into a reversed polish notation (postfix). This is a really extensible implementation.",
+  "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/.bin/grunt"
+    "build": "webpack",
+    "test": "mocha --compilers js:babel-core/register ./test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,12 @@
   },
   "homepage": "https://github.com/Calamari/shunting-yard.js",
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-jasmine": "~0.5.2",
-    "grunt-contrib-uglify": "~0.2.7",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-cli": "~0.1.11"
-  }
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {}
 }
