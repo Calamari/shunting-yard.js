@@ -11,42 +11,41 @@
  * @homepage http://github.com/Calamari/shunting-yard.js
  */
 import Operator from './Operator'
-import Function from './Function'
 
 export default class ShuntingYard {
-  constructor () {
+  constructor() {
     this.operators = {
-      '+': new Operator('+', 2, 'left', 2, function(a, b) { return a + b }),
-      '-': new Operator('-', 2, 'left', 2, function(a, b) { return a - b }),
-      '*': new Operator('*', 3, 'left', 2, function(a, b) { return a * b }),
-      '/': new Operator('/', 3, 'left', 2, function(a, b) { return a / b }),
-      '^': new Operator('^', 4, 'right', 2, function(a, b) { return Math.pow(a, b) })
+      '+': new Operator('+', 2, 'left', 2, function (a, b) { return a + b }),
+      '-': new Operator('-', 2, 'left', 2, function (a, b) { return a - b }),
+      '*': new Operator('*', 3, 'left', 2, function (a, b) { return a * b }),
+      '/': new Operator('/', 3, 'left', 2, function (a, b) { return a / b }),
+      '^': new Operator('^', 4, 'right', 2, function (a, b) { return Math.pow(a, b) })
     }
     this.functions = {}
   }
 
-  addFunction (key, func) {
+  addFunction(key, func) {
     if (this.functions[key]) {
       throw new Error(`Function ${key} does already exist.`)
     }
     this.functions[key] = func
   }
 
-  addOperator (key, operator) {
+  addOperator(key, operator) {
     if (this.operators[key]) {
       throw new Error(`Operator ${key} does already exist.`)
     }
     this.operators[key] = operator
   }
 
-  parse (str) {
+  parse(str) {
     let output = []
     let stack = []
     let sign
     let lastToken
     let token
 
-    for (let i=0, l=str.length; i<l; ++i) {
+    for (let i = 0, l = str.length; i < l; ++i) {
       token = str[i]
       if (token === ' ') {
         continue // do nothing with spaces
@@ -76,7 +75,7 @@ export default class ShuntingYard {
         }
         while (stack.length) {
           const thisOperator = this.operators[token]
-          const operator = this.operators[stack[stack.length-1]]
+          const operator = this.operators[stack[stack.length - 1]]
           if (!operator || !thisOperator) { break }
           if ((thisOperator.leftAssoc() && thisOperator.lessThenEqual(operator)) || thisOperator.lessThen(operator)) {
             output.push(stack.pop())
@@ -106,11 +105,10 @@ export default class ShuntingYard {
     return output
   }
 
-  resolveRpn (arr) {
+  resolveRpn(arr) {
     let stack = []
-    let operators = []
 
-    for (let i=0, l=arr.length; i<l; ++i) {
+    for (let i = 0, l = arr.length; i < l; ++i) {
       const op = this.operators[arr[i]] || this.functions[arr[i]]
       if (op) {
         stack.push(op.method.apply(this, stack.splice(-op.params)))
@@ -122,23 +120,23 @@ export default class ShuntingYard {
     return stack[0]
   }
 
-  resolve (str) {
+  resolve(str) {
     return this.resolveRpn(this.parse(str))
   }
 
-  isLeftPara (token) {
+  isLeftPara(token) {
     return token === '('
   }
 
-  isRightPara (token) {
+  isRightPara(token) {
     return token === ')'
   }
 
-  isOperator (token) {
+  isOperator(token) {
     return Object.keys(this.operators).indexOf(token) !== -1
   }
 
-  isFunction (token) {
+  isFunction(token) {
     return Object.keys(this.functions).indexOf(token) !== -1
   }
 }
