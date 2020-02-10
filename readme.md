@@ -9,7 +9,7 @@ An more in depth introduction to this algorithm you can get on [Wikipedia](http:
 
 ### if used with a string
 
-This implementation of the shunting yard algorithm takes a String in and puts out an array representation in reversed polish notation (RPN). The resulting RPN you can easily processed (using the `ShuntingYard.resolveRpn` function) to a resulting number.
+This implementation of the shunting yard algorithm takes a String in and puts out an array representation in reversed polish notation (RPN). The resulting RPN you can easily processed (using the `ShuntingYard.resolveRPN` function) to a resulting number.
 
 Note that `ShuntingYard.parse` will ignore every whitespace of the input string. Strings formatted like `'1 100 + 5'` will result in the array containing those tokens: `[1100, 5, +]` – which also allows for nice formatting of bigger number, but could lead to problems if there was meant an operator between 1 and 100.
 
@@ -29,7 +29,7 @@ const shuntingYard = new ShuntingYard();
 const rpn = shuntingYard.parse('10+3*3'); // rpn is now: ['10', '3', '3', '*', '+']
 const result = shuntingYard.resolveRPN(rpn); // result is now: 19
 // or in short:
-const result2 = shuntingYard.resolve(rpn); // result is now: 19
+const result2 = shuntingYard.resolve('10+3*3'); // result is now: 19
 ```
 
 If you want, you could also use eval for this string but nobody would like to have eval in their code (considering what eval is doing to your parser and the security implications you have to be aware of).
@@ -68,7 +68,7 @@ For `resolveRPN`:
 
 ## MIT License
 
-Copyright (C) 2013-2017 Georg Tavonius
+Copyright (C) 2013-2020 Georg Tavonius
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
