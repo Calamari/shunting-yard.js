@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "webpack",
-    "test": "mocha --compilers js:babel-core/register ./test/*.test.js"
+    "test": "mocha --compilers js:@babel/register ./test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/Calamari/shunting-yard.js",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
     "chai": "^4.1.2",
     "mocha": "^3.5.3",
     "webpack": "^3.6.0"
